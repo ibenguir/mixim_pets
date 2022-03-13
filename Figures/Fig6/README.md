@@ -1,0 +1,33 @@
+This repository holds the parameters and instructions for 'Fig6: Anonymity with uniform vs biased routing considering no adversarial nodes and 10% of adversarial nodes'.
+
+
+Instructions for uniform routing:
+
+In main.py
+
+        p = Pool(processes=2, maxtasksperchild=1)
+        param = [0, 0.1]
+        corrupt_mixes = rate * total_n_mixes
+    
+In ConfigFile.ini:
+
+        routing_weights = Uniform
+        n_layers = 3
+        l_mixes_per_layer = 10
+
+Instructions for Biased routing:
+
+In main.py
+
+        p = Pool(processes=2, maxtasksperchild=1)
+        param = [0, 0.1]
+        corrupt_mixes = rate * total_n_mixes
+    
+In ConfigFile.ini:
+
+        routing_weights = biased
+        w_mix_l1 = [0.5]
+        w_mix_l2 = [0.3]
+        w_mix_l3 = [0.1]
+   
+
