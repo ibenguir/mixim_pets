@@ -13,8 +13,8 @@ logDir = 'Logs/'
 class Simulation(object):
 
     def __init__(self, mix_type, simDuration, rate_client, mu, logging, topology, fully_connected, n_clients,
-                 flush_percent, printing, flush_timeout, threshold, routing, n_layers,
-                 n_mixes_per_layer, corrupt, unifrom_corruption, probability_dist_mixes, nbr_cascacdes, client_dummies,
+                 flush_percent, printing, routing, n_layers,
+                 n_mixes_per_layer, corrupt, unifrom_corruption, probability_dist_mixes, client_dummies,
                  rate_client_dummies, link_based_dummies, multiple_hops_dummies, rate_mix_dummies, Network_template):
 
         self.Log = Log()
@@ -22,7 +22,6 @@ class Simulation(object):
         self.logging = logging
         self.printing = printing
         self.topology = topology
-        self.n_cascades = nbr_cascacdes
         self.fully_connected = fully_connected
         self.flush_percent = flush_percent
 
@@ -35,7 +34,6 @@ class Simulation(object):
         self.n_clients = n_clients
         self.clientsSet = set()
         self.rate_client = rate_client  # average delay between messages being sent from client
-        self.threshold = threshold
         self.mu = mu  # average delay at poisson mixes
         self.n_layers = n_layers
         self.n_mixes_per_layer = n_mixes_per_layer
@@ -47,21 +45,17 @@ class Simulation(object):
         self.env = simpy.Environment()
         self.SimDuration = simDuration
         self.burnout = 10
-        self.flush_timeout = flush_timeout
         self.n_targets = 0
         self.MsgsDropped = []
 
         self.dummyID = 0
         time_stable = ((1 / self.rate_client) / self.n_layers) * self.mu + 2
-        if self.mix_type == 'poisson':
-            self.n_targets = int(((self.SimDuration - time_stable) ) / 2)
-        else:
-            self.n_targets = int((self.SimDuration - self.flush_timeout - 1) / 4)
+        self.n_targets = int(((self.SimDuration - time_stable)) / 2)
+
         self.network = Network(self.mix_type, self.n_layers, self.n_mixes_per_layer, self.corrupt,
-                               self.unifrom_corruption, self, self.threshold,
-                               self.flush_percent, self.topology, fully_connected, self.flush_timeout,
-                               self.probability_dist_mixes,
-                               self.n_cascades, self.link_based_dummies, self.multiple_hop_dummies,
+                               self.unifrom_corruption,
+                               self.flush_percent, self.topology, fully_connected,
+                               self.probability_dist_mixes, self.link_based_dummies, self.multiple_hop_dummies,
                                self.rate_mix_dummies,
                                Network_template, self.n_targets)
 
@@ -78,12 +72,6 @@ class Simulation(object):
         self.numberrounds = []
 
     def set_stable_mix(self, index):
-        if self.mix_type == 'pool':
-            yield self.env.timeout(10)
-            self.startAttack = True
-        elif self.mix_type == 'time':
-            yield self.env.timeout(self.flush_timeout + 5)
-            self.startAttack = True
         self.stableMixL1[index] = True
         if all(self.stableMixL1):
             yield self.env.timeout(2)
@@ -106,28 +94,6 @@ class Simulation(object):
                 self.clientsSet.add(client)
             for client in self.clientsSet:
                 client.other_clients = self.clientsSet - {client}
-        elif self.topology == 'XRD':
-            groups_lists = XRD_New(self.network.list_cascades)
-            n_group_client = self.n_clients // len(groups_lists)
-            for client_id in range(n_group_client):
-                client = Client.Client(self, client_id, groups_lists[0], self.rate_client, self.mu,
-                                       probabilityDistribution, n_targets, client_dummies, Log)
-                self.clientsSet.add(client)
-            for n_client in range(n_group_client, n_group_client * 2):
-                client = Client.Client(self, n_client, groups_lists[1], self.rate_client, self.mu,
-                                       probabilityDistribution, n_targets, client_dummies, Log)
-                self.clientsSet.add(client)
-            for n_client in range(n_group_client * 2, n_group_client * 3):
-                client = Client.Client(self, n_client, groups_lists[2], self.rate_client, self.mu,
-                                       probabilityDistribution, n_targets, client_dummies, Log)
-                self.clientsSet.add(client)
-            for n_client in range(n_group_client * 3, self.n_clients):
-                client = Client.Client(self, n_client, groups_lists[3], self.rate_client, self.mu,
-                                       probabilityDistribution, n_targets, client_dummies, Log)
-                self.clientsSet.add(client)
-
-            for client in self.clientsSet:
-                client.otherClients = self.clientsSet - {client}
 
     def run(self, time=None):
         # Print statements and results from here
@@ -194,7 +160,7 @@ class Simulation(object):
 
         dict_entropy = {'Entropy': entropy}
         df_entropy = pd.DataFrame(dict_entropy)
-        df_entropy.to_csv(f'{logDir}{self.n_layers}layers_{self.n_mixes_per_layer}mixes_player_Entropy.csv')
+        df_entropy.to_csv(f'{logDir}Entropy.csv')
 
         entropy_mean = np.mean(entropy)
         try:

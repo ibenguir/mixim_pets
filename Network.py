@@ -9,8 +9,7 @@ class Network:
     network_dict = {}  # 1:[list of mixes in layer 1], 2:[list of mixes in layer 2], ...
 
     def __init__(self, mix_type, num_layers, nbr_mixes_layers, corrupt, unifrom_corruption, simulation,
-                 threshold,
-                 flush_percent, topology,fully_connected, flushtime, probability_dist_mixes, n_cascades,  link_based_dummies, multiple_hop_dummies, rate_mix_dummies, Network_template, numberTargets):
+                 flush_percent, topology,fully_connected, probability_dist_mixes,  link_based_dummies, multiple_hop_dummies, rate_mix_dummies, Network_template, numberTargets):
         self.simulation = simulation
         self.num_layers = num_layers
         self.mix_type = mix_type
@@ -18,12 +17,9 @@ class Network:
         self.corrupt = corrupt
         self.unifrom_corruption = unifrom_corruption
         self.env = simulation.env
-        self.threshold = threshold
         self.flush_percent = flush_percent
         self.topology = topology
         self.fully_connected = fully_connected
-        self.flushtime = flushtime
-        self.n_cascades = n_cascades
         self.link_based_dummies = link_based_dummies
         self.multiple_hop_dummies =multiple_hop_dummies
         self.rate_mix_dummies = rate_mix_dummies
@@ -70,37 +66,9 @@ class Network:
                         mix.neighbors = self.network_dict[1]
                 else:
                     pass
-                    #for mix in self.MixesAll:
-                        #if mix.id == 1:
-                            #mix.neighbors = []
-                            #mix.neighbors.append(self.LayerDict[mix.layer + 1][0])
-                            #mix.neighbors.append(self.LayerDict[mix.layer + 1][1])
-        elif self.topology == 'XRD':
-            mixnb = 1
-            for n in range(1, 1 + self.n_cascades):
-                cascade = []
-                for m in range(self.num_layers):
-                    varCorrupt = False
-                    mix = self.get_mixnode(self.mix_type, mixnb, m + 1, self.numberTargets, varCorrupt,
-                                           1 / self.n_cascades)
-                    mix.n_chain = n
-                    self.all_mixes.add(mix)
-                    mixnb += 1
-                    cascade.append(mix)
-                self.list_cascades[n] = cascade
-            for n, list in self.list_cascades.items():
-                print('Chain number', n, ':', list)
+
 
     def get_mixnode(self, mix_type, id, position, numberTargets, corrupt, weight_mix):
         if mix_type == 'poisson':
             return PoissonMix(id, self.simulation, position, self.link_based_dummies,self.multiple_hop_dummies, self.rate_mix_dummies,
                               numberTargets, corrupt, weight_mix)
-        elif mix_type == 'pool':
-            return Pool(id, self.simulation, position, self.threshold, self.flush_percent, numberTargets,
-                        corrupt, weight_mix)
-        elif mix_type == 'time':
-            return TimedMix(id, self.simulation, position, self.flushtime, numberTargets, corrupt,
-                            weight_mix)
-
-    def odd(self, number):
-        return number % 2 == 1
