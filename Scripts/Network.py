@@ -9,7 +9,9 @@ class Network:
     network_dict = {}  # 1:[list of mixes in layer 1], 2:[list of mixes in layer 2], ...
 
     def __init__(self, mix_type, num_layers, nbr_mixes_layers, corrupt, unifrom_corruption, simulation,
-                 flush_percent, topology,fully_connected, probability_dist_mixes,  link_based_dummies, multiple_hop_dummies, rate_mix_dummies, Network_template, numberTargets):
+                 topology,fully_connected, probability_dist_mixes,  link_based_dummies, multiple_hop_dummies, rate_mix_dummies, Network_template, numberTargets):
+
+
         self.simulation = simulation
         self.num_layers = num_layers
         self.mix_type = mix_type
@@ -17,7 +19,6 @@ class Network:
         self.corrupt = corrupt
         self.unifrom_corruption = unifrom_corruption
         self.env = simulation.env
-        self.flush_percent = flush_percent
         self.topology = topology
         self.fully_connected = fully_connected
         self.link_based_dummies = link_based_dummies

@@ -1,10 +1,10 @@
 import simpy
-import Client
-from Network import Network
+from Scripts import Client
+from Scripts.Network import Network
 import pandas as pd
 import numpy as np
-from Relay import Attacker
-from Log import Log
+from Scripts.Relay import Attacker
+from Scripts.Log import Log
 
 DEFAULT_TOPOLOGY = 'stratified'
 logDir = 'Logs/'
@@ -12,8 +12,7 @@ logDir = 'Logs/'
 
 class Simulation(object):
 
-    def __init__(self, mix_type, simDuration, rate_client, mu, logging, topology, fully_connected, n_clients,
-                 flush_percent, printing, routing, n_layers,
+    def __init__(self, mix_type, simDuration, rate_client, mu, logging, topology, fully_connected, n_clients, printing, routing, n_layers,
                  n_mixes_per_layer, corrupt, unifrom_corruption, probability_dist_mixes, client_dummies,
                  rate_client_dummies, link_based_dummies, multiple_hops_dummies, rate_mix_dummies, Network_template):
 
@@ -23,7 +22,6 @@ class Simulation(object):
         self.printing = printing
         self.topology = topology
         self.fully_connected = fully_connected
-        self.flush_percent = flush_percent
 
         self.client_dummies = client_dummies
         self.rate_client_dummies = rate_client_dummies
@@ -53,8 +51,8 @@ class Simulation(object):
         self.n_targets = int(((self.SimDuration - time_stable)) / 2)
 
         self.network = Network(self.mix_type, self.n_layers, self.n_mixes_per_layer, self.corrupt,
-                               self.unifrom_corruption,
-                               self.flush_percent, self.topology, fully_connected,
+                               self.unifrom_corruption, self,
+                               self.topology, fully_connected,
                                self.probability_dist_mixes, self.link_based_dummies, self.multiple_hop_dummies,
                                self.rate_mix_dummies,
                                Network_template, self.n_targets)
