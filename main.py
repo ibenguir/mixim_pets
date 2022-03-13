@@ -77,3 +77,4 @@ if __name__ == "__main__":
     print("Mean Entropy", table_mean_entropy)
     print("Median Entropy", table_median_entropy)
     print("Quantile Entropy 0.25", table_q25_entropy)
+    print("write")
