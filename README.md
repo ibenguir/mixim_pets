@@ -7,13 +7,11 @@ The reproducibility steps described in this repository require a number of insta
     Update your package list: sudo apt update
     Install Python 3 (programming language): sudo apt install python3,
     Install Pip (Python package manager): sudo apt install python3-pip,
-    Install Jupyter Lab and Python libraries simpy, numpy, pandas, seaborn, and matplotlib: pip install simpy jupyterlab numpy pandas seaborn matplotlib,
+    Install Jupyter Lab and Python libraries simpy, numpy, pandas, and matplotlib: pip install simpy jupyterlab numpy pandas seaborn matplotlib,
 
-Instructions for Reproduction:
-
-    First, you need to chose the parameters for each scenario
-    All the parameters of the network are in the file ConfigFile.ini
+Instructions for Reproduction: In order to reproduce the graphs of Fig5, Fig6, Fig7, Fig8 and Fig9, there are 3 steps: (1) Initialize the parameters in ConfigFile.ini (2) run the main function (3) plot the result. 
     
-    The main function of this programme is main.py
+    
+    For each figure, please README.md under Figures/ 
     run 'nohup python3 main.py &'
-    When the simulation time is reached, result will be '/Logs/entropy.csv'
+    When the simulation time is reached, result will be '/Logs/Entropy.csv'
