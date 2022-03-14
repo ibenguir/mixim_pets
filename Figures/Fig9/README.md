@@ -3,11 +3,11 @@ This repository holds the parameters and instructions for 'Fig9:Average anonymit
 
 In main.py, for each line that corresponds to a different b we change the values of corrupt_mixes:
 
-        p = Pool(processes=10, maxtasksperchild=1)
-        param = [10,20,30,40,50,60,70,80,90,100]
-        rate_mix_dummies = 1.5*100                          #values are 1.5*100, 1.5*1000, 1.5*10000
-        corrupt_mixes = 0 * n_total_mixes                   #values are 0, 0.1
-    
+        rate_mix_dummies = rate
+        corrupt_mixes = int(0 * n_total_mixes)                #values are 0, 0.1
+        
+        p = Pool(processes=4, maxtasksperchild=1)
+        param = [0, 1.5*100, 1.5*1000, 1.5*10000]
 In ConfigFile.ini:
         
         n_clients= 100

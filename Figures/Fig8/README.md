@@ -6,10 +6,12 @@ In main.py, for each line that corresponds to a different b we change the values
 
         p = Pool(processes=10, maxtasksperchild=1)
         param = [10,20,30,40,50,60,70,80,90,100]
-        corrupt_mixes = 0 * n_total_mixes                   #values are 0, 0.1
+        corrupt_mixes = int(0 * n_total_mixes)                   #values are 0, 0.1
     
 In ConfigFile.ini for each line that corresponds to a different B we change the value corrupt_mixes:
 
+        n_clients= 500
+        lambda_c = 10
         ETE = 1
         n_layer = 3
         corrupt_mixes = 0                                   #values are 0, 9,15,30
