@@ -6,7 +6,7 @@ For Fig5.a:
         n_clients= 500
         lambda_c = 10
         l_mixes_per_layer = 10
-
+        type = dynamic                      # type values are 'fixed', 'dynamic' 'fixed_per_mix'
 
 
     In main.py:
@@ -15,13 +15,13 @@ For Fig5.a:
         p = Pool(processes=4, maxtasksperchild=1)
         param = [1, 5, 10, 15]
 
-For Fig5.6:
+For Fig5.b:
     
     In ConfigFile.ini:
         n_clients= 500
         lambda_c = 10
         l_mixes_per_layer = 10
-
+        type = dynamic                      # type values are 'fixed', 'dynamic' 'fixed_per_mix'
 
 
     In main.py:
