@@ -40,7 +40,8 @@ class Attacker:
                 self.var = False
                 yield self.env.timeout(2)
                 self.var = True
-
+        if self.simulation.propagation == 'fixed':
+            print("propagation delay is fixed")
         yield self.env.timeout(0.05)  # 'link' delay
         receiver.receive_message(msg)
         self.checkEndSim()

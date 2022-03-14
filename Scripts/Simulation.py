@@ -13,7 +13,7 @@ logDir = 'Logs/'
 class Simulation(object):
 
     def __init__(self, mix_type, simDuration, rate_client, mu, logging, topology, fully_connected, n_clients, printing, routing, n_layers,
-                 n_mixes_per_layer, corrupt, unifrom_corruption, probability_dist_mixes, client_dummies,
+                 n_mixes_per_layer, corrupt, unifrom_corruption, propagation, probability_dist_mixes, client_dummies,
                  rate_client_dummies, link_based_dummies, multiple_hops_dummies, rate_mix_dummies, Network_template):
 
         self.Log = Log()
@@ -36,6 +36,7 @@ class Simulation(object):
         self.n_layers = n_layers
         self.n_mixes_per_layer = n_mixes_per_layer
         self.corrupt = corrupt
+        self.propagation = propagation
         self.probability_dist_mixes = probability_dist_mixes
         self.unifrom_corruption = unifrom_corruption
         self.mix_type = mix_type
