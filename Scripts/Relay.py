@@ -41,8 +41,13 @@ class Attacker:
                 yield self.env.timeout(2)
                 self.var = True
         if self.simulation.propagation == 'fixed':
-            print("propagation delay is fixed")
-        yield self.env.timeout(0.05)  # 'link' delay
+            propagation_time = 0.05
+        elif self.simulation.propagation == 'dynamic':
+            propagation_time = np.random.uniform(link_delay[0], link_delay[1])
+        else:
+            pass
+        print("propagation time", propagation_time)
+        yield self.env.timeout(propagation_time)  # 'link' delay
         receiver.receive_message(msg)
         self.checkEndSim()
 
