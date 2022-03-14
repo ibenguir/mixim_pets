@@ -20,8 +20,8 @@ def main(rate):
     n_clients = int(config['DEFAULT']['n_clients'])
     lambda_c =  float(config['DEFAULT']['lambda_c'])
     #For Stratified Topology
-    n_layer = 3 #int(config['TOPOLOGY']['n_layers'])
-    n_mix_per_layer =3 #int(config['TOPOLOGY']['l_mixes_per_layer'])
+    n_layer = int(config['TOPOLOGY']['n_layers'])
+    n_mix_per_layer = int(config['TOPOLOGY']['l_mixes_per_layer'])
     total_n_mixes = n_layer * n_mix_per_layer
 
     mu = (int(config['TOPOLOGY']['E2E']) - (n_layer + 1)*0.05)/n_layer
@@ -56,5 +56,5 @@ def main(rate):
 
 if __name__ == "__main__":
     p = Pool(processes=1, maxtasksperchild=1)
-    param = [0, 0.1]
+    param = [1]
     result = p.map(main,param, chunksize=1)
