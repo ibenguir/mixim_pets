@@ -32,6 +32,8 @@ We log different types of data (number of message, average latency etc) and are 
 Instructions for Reproduction the exact graphs in the paper:
     In order to reproduce the graphs of Fig5, Fig6, Fig7, Fig8 and Fig9, there are 3 steps: (1) Initialize the parameters in ConfigFile.ini (2) run the main function (3) plot the result. 
 
+All the changes in each configuration happen in ConfigFile or main.py. For this reason we have included under each subfolder, these files with the corresponding parameters. One can simply replace main.py and ConfigFile.ini under the main Scripts folder.
+
 For each graph:
     
     read README.md under each subfolder
@@ -43,4 +45,3 @@ Note that the instructions in main.py for certain configurations require more th
 One can simply always use one CPU for each simulation, save the result,  and update the next parameter etc.
 
 
-All the changes in each configuration happen in ConfigFile or main.py. For this reason we have included under each subfolder, these files with the corresponding parameters. One can simply replace main.py and ConfigFile.ini under the main Scripts folder.
