@@ -46,7 +46,6 @@ class Attacker:
             propagation_time = np.random.uniform(link_delay[0], link_delay[1])
         else:
             pass
-        print("propagation time", propagation_time)
         yield self.env.timeout(propagation_time)  # 'link' delay
         receiver.receive_message(msg)
         self.checkEndSim()
