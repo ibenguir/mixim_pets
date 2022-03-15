@@ -59,3 +59,7 @@ if __name__ == "__main__":
     p = Pool(processes=1, maxtasksperchild=1)
     param = [1]
     result = p.map(main,param, chunksize=1)
+    table_entropy = []
+    for item in result:
+        table_entropy.append(item[0])
+    print("Entropy", table_entropy)
