@@ -19,24 +19,25 @@ All the scripts of the simulator are under the main folder Scripts. After instal
 
 Please note that simulation might take time, so we usually run the following command:
         
-`nohup python3 main.py > result.txt &`
+    `nohup python3 main.py > result.txt &`
 When simulation is done (we can simply check by using the command `'top'`) results, entropy data, is printed in the file text result.txt.
        
     tail -1 result.txt
 
 
-We log, different types of data (number of message, average latency etc) and are all stored in the file 'result.txt'. We can check all data using:
+We log different types of data (number of message, average latency etc) and are all stored in the file 'result.txt'. We can check all data using:
 
     nano result.txt
 
 Instructions for Reproduction the exact graphs in the paper:
     In order to reproduce the graphs of Fig5, Fig6, Fig7, Fig8 and Fig9, there are 3 steps: (1) Initialize the parameters in ConfigFile.ini (2) run the main function (3) plot the result. 
 
-For each graph:    
+For each graph:
     
-    Update the files ConfigFile.ini and main.py according to the parameters provided in README.md under each subfolder Figures/FigX 
-    run 'nohup python3 main.py &'
-    When the simulation time is reached, result will be '/Logs/Entropy.csv'
+    read README.md under each subfolder
+    Update the content of the files ConfigFile.ini and main.py by the files uder Figures/FigX 
+    run 'nohup python3 main.py > result.txt &'
+    When the simulation time is reached, result will be in result.txt
 
 Note that the instructions in main.py for certain configurations require more than just one CPU. However, using more than one CPU is only for speed puposes.
 One can simply always use one CPU for each simulation, save the result,  and update the next parameter etc.
