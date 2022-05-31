@@ -11,7 +11,7 @@ In main.py
     
 In ConfigFile.ini:
 
-        routing_weights = Uniform
+        routing_weights = uniform
         n_layers = 3
         l_mixes_per_layer = 10
 
@@ -26,8 +26,5 @@ In main.py
 In ConfigFile.ini:
 
         routing_weights = biased
-        w_mix_l1 = [0.5]
-        w_mix_l2 = [0.3]
-        w_mix_l3 = [0.1]
    
 
