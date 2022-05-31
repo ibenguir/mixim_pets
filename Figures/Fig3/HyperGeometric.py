@@ -13,8 +13,8 @@ def HyperGemotricDistribution(N, B, W, k):
     prob = FirstTerm * SecondTerm /ThirdTerm
     return prob
 def topologies():
-    N = 10
-    B = 4
+    N = 100
+    B = 10
     L = 3
     W = N//L
     combinations = itertools.product(range(B + 1), repeat=L)
@@ -36,6 +36,6 @@ def topologies():
     PrF = ProbPath * summation
     return PrF
 if __name__ == "__main__":
-    pr_F = topologies()
+    alpha_F = topologies()
     print("Geometric Distribution")
-    print("PrF", pr_F)
+    print("PrF", alpha_F)
