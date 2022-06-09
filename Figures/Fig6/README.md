@@ -28,3 +28,4 @@ In ConfigFile.ini:
         routing_weights = biased
    
 
+Note:   Entropy values will consist of 2 arrays, each corresponds to the different corruption rate. Copy each array of entropy values in the jupyter file fig6.ipynb

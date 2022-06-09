@@ -71,4 +71,4 @@ if __name__ == "__main__":
     table_entropy = []
     for item in result:
         table_entropy.append(item[1])
-    print("Entropy", table_entropy)
+    print("Mean Entropy", table_entropy)

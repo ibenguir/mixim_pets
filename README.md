@@ -34,13 +34,16 @@ Instructions for Reproduction the exact graphs in the paper:
 
 All the changes in each configuration happen in ConfigFile or main.py. For this reason we have included under each subfolder, these files with the corresponding parameters. One can simply replace main.py and ConfigFile.ini under the main Scripts folder.
 
-For each graph:
+In order to replicate the graphs, we used Jupyter Notebook App which is an open source server-client application that allows editing and running notebook documents via a web browser.
+You can find the jupyter file with our simulated data for each figure under the folder Figure.
+To replicate each graph:
     
     read README.md under each subfolder
     Update the content of the files ConfigFile.ini and main.py by the files uder Figures/FigX 
     run 'nohup python3 main.py > result.txt &'
     When the simulation time is reached, result will be in result.txt
 
+Depending on which figure, you need to copy the result in the corresponding variable in the jupyter file. Further detailed explanation is provided in the different read.md files.
 Note that the instructions in main.py for certain configurations require more than just one CPU. However, using more than one CPU is only for speed puposes.
 One can simply always use one CPU for each simulation, save the result,  and update the next parameter etc.
 
