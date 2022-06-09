@@ -15,7 +15,7 @@ class PoissonMix(Mix):
         self.rate_mix_dummies = rate_mix_dummies
         self.pr_mix = pr_mix
         self.pool_dummies = []
-        if (self.link_based_dummies or self.multiple_hop_dummies) and (not self.corrupt) and self.layer != self.simulation.n_layers:
+        if (self.link_based_dummies or self.multiple_hop_dummies) and (self.rate_mix_dummies is not None) and (not self.corrupt) and self.layer != self.simulation.n_layers:
             self.env.process(self.send_dummies())
 
     def receive_message(self, msg):
