@@ -7,3 +7,4 @@ In order to be able to reproduce the data points:
     
     L= 2            # L values take 2, 3 , 4, 5
     B = 10          # B values take 30, 20, 10
+To replicate the graph copy the printed alpha_F in the jupyter file (alphaF_b10 for the configuration B=10, alpha_b20 for the configuration B=20 etc).
