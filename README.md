@@ -35,6 +35,15 @@ Instructions for Reproduction the exact graphs in the paper:
 All the changes in each configuration happen in ConfigFile or main.py. For this reason we have included under each subfolder, these files with the corresponding parameters. One can simply replace main.py and ConfigFile.ini under the main Scripts folder.
 
 In order to replicate the graphs, we used Jupyter Notebook App which is an open source server-client application that allows editing and running notebook documents via a web browser.
+To lunch jupyter ( given that it was install with pip install jupyterLab), open terminal and run:
+`    jupyter notebook
+`    
+
+This will open a new tab in your browser;
+![](/home/iness/Desktop/pets.png)
+
+Now you can upload the "*.ipynb" files that are under the folder "Figures".
+
 You can find the jupyter file with our simulated data for each figure under the folder Figure.
 To replicate each graph:
     
