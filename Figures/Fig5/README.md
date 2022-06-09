@@ -6,7 +6,7 @@ For Fig5.a:
         type = dynamic                      # type values are 'fixed', 'dynamic' 'fixed_per_mix'
 
     In main.py:
-        mu = 1
+        mu = 0.1
 
 
 For Fig5.b:

@@ -10,4 +10,3 @@ def Weights (Number_layer, Number_Mix_Per_Layer):
     return probability
 
 
-
