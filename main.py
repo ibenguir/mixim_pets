@@ -68,8 +68,8 @@ def main(arg):
     return [entropy, entropy_mean, entropy_median , entropy_q25]
 
 if __name__ == "__main__":
-    p = Pool(processes=2, maxtasksperchild=1)
-    param = [None, 100]
+    p = Pool(processes=1, maxtasksperchild=1)
+    param = [None]
     result = p.map(main,param, chunksize=1)
     table_entropy = []
     for item in result:
