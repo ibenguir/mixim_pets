@@ -5,7 +5,7 @@ from util import Weights
 import configparser
 
 def main(arg):
-
+    #artifacts 2.0
     config = configparser.ConfigParser()
     config.read('ConfigFile.ini')
 
