@@ -7,7 +7,7 @@ In main.py
 
         p = Pool(processes=2, maxtasksperchild=1)
         param = [0, 0.1]
-        corrupt_mixes = rate * total_n_mixes
+        corrupt_mixes = int(arg*total_n_mixes)
     
 In ConfigFile.ini:
 
@@ -21,7 +21,8 @@ In main.py
 
         p = Pool(processes=2, maxtasksperchild=1)
         param = [0, 0.1]
-        corrupt_mixes = rate * total_n_mixes
+        corrupt_mixes = int(arg*total_n_mixes)
+
     
 In ConfigFile.ini:
 

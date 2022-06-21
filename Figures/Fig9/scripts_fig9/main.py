@@ -54,7 +54,7 @@ def main(arg):
     else:
         weights = []
         print("error typing routing type. Please check ConfigFile.ini")
-    simulation = Simulation(mix_type=mix_type, simDuration=50, rate_client=1/lambda_c, mu=mu, logging=True,
+    simulation = Simulation(mix_type=mix_type, simDuration=150, rate_client=1/lambda_c, mu=mu, logging=True,
                             topology=topology,fully_connected= fully_connected, n_clients=n_clients,printing = True, routing=routing, n_layers=n_layer,
                             n_mixes_per_layer=n_mix_per_layer,corrupt= corrupt_mixes,propagation=type,unifrom_corruption= balanced_corruption,probability_dist_mixes=weights,client_dummies=client_dummies,rate_client_dummies = rate_client_dummies, link_based_dummies = link_dummies, multiple_hops_dummies = multiple_hops_dummies,rate_mix_dummies = rate_mix_dummies,
                             Network_template=None)
