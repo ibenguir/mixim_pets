@@ -5,7 +5,7 @@ from util import Weights
 import configparser
 
 def main(arg):
-    #artifacts 2.0
+
     config = configparser.ConfigParser()
     config.read('ConfigFile.ini')
 
@@ -42,7 +42,6 @@ def main(arg):
     else:
         rate = 1/arg
     rate_mix_dummies =rate
-    print(rate_mix_dummies)
     routing_type = config['NODES_SELETION']['routing_weights']
     if routing_type == "uniform":
         weights = Weights(n_layer, n_mix_per_layer)
@@ -69,8 +68,8 @@ def main(arg):
     return [entropy, entropy_mean, entropy_median , entropy_q25]
 
 if __name__ == "__main__":
-    p = Pool(processes=4, maxtasksperchild=1)
-    param = [None, 100,1000,10000]
+    p = Pool(processes=2, maxtasksperchild=1)
+    param = [None, 100]
     result = p.map(main,param, chunksize=1)
     table_entropy = []
     for item in result:
