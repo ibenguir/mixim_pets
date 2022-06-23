@@ -5,18 +5,18 @@ In main.py param values as well as p values change as follows:
 
 1. For E2E= 5, E2E = 2, E2E=1:
 
-    `p = Pool(processes=19, maxtasksperchild=1)
-    param = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]`
+        p = Pool(processes=19, maxtasksperchild=1)
+        param = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
 2. For E2E = 0.5, we can only compute the entropy values for up to 9 layers:
 
-    `p = Pool(processes=9, maxtasksperchild=1)
-    param = [1, 2, 3, 4, 5, 6, 7, 8, 9]`
+        p = Pool(processes=9, maxtasksperchild=1)
+        param = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 3. For E2E = 0.25 we can only compute the entropy values for up to 4 layers:
 
-    `p = Pool(processes=4, maxtasksperchild=1)
-    param = [1, 2, 3, 4]`
+        p = Pool(processes=4, maxtasksperchild=1)
+        param = [1, 2, 3, 4]
 
 Please note that in order for parallel processing where each processing corresponds to a different layer, we use a computer with more than 19 CPUs.
 

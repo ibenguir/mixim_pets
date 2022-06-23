@@ -9,9 +9,7 @@ The reproducibility steps described in this repository require a number of insta
     Install Pip (Python package manager): sudo apt install python3-pip,
     Install Jupyter Lab and Python libraries simpy, numpy, pandas, and matplotlib: pip install simpy jupyterlab numpy pandas seaborn matplotlib,
 
-The main function of the simulator is entropy computation (details are provided in Section3.2):
-
-![](/home/iness/Desktop/entropy.png)
+The main function of the simulator is entropy computation (details are provided in Section3.2)
 
 All the scripts of the simulator are under the main folder Scripts. After installing the above packages:
  
