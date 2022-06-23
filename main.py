@@ -5,7 +5,7 @@ from util import Weights
 import configparser
 
 def main(arg):
-
+    # TEST
     config = configparser.ConfigParser()
     config.read('ConfigFile.ini')
 
